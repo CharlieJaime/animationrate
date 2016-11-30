@@ -22,6 +22,22 @@ class AnimesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @anime.update(anime_params)
+      redirect_to anime_path(@anime)
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    @anime.destroy
+    redirect_to root_path
+  end
+
   private
   def anime_params
     params.require(:anime).permit(:title, :description, :creator)
