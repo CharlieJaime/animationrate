@@ -1,5 +1,3 @@
 <% @animes.each do |anime| %>
   <h2><%= link_to anime.title, anime_path(anime) %></h2>
 <% end %>
-
-<%= link_to "Add Anime", new_anime_path %>

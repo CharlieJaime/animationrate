@@ -9,11 +9,11 @@ class AnimesController < ApplicationController
   end
 
   def new
-    @anime = Anime.new
+    @anime = current_user.play.build
   end
 
   def create
-    @anime = Anime.new(anime_params)
+    @anime = current_user.play.build(anime_params)
 
     if @anime.save
       redirect_to root_path
