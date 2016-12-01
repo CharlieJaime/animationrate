@@ -2,6 +2,11 @@
 <h3><%= @anime.creator %></h3>
 <p><%= @anime.description %></p>
 
-<%= link_to "Edit", edit_anime_path(@anime) %>
-<%= link_to "Back", root_path %>
-<%= link_to "Delete", anime_path(@anime), method: :delete, data: {confirm: "Are you sure?" }%>
+<div class="links btn-group">
+  <% if user_signed_in? %>
+    <% if @anime.user_id == current_user.id %>
+      <%= link_to "Edit", edit_anime_path(@anime) %>
+      <%= link_to "Delete", anime_path(@anime), method: :delete, data: {confirm: "Are you sure?" }%>
+    <% end %>
+  <% end %>
+</div>
