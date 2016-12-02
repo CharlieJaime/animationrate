@@ -10,10 +10,12 @@ class AnimesController < ApplicationController
 
   def new
     @anime = current_user.anime.build
+    @categories = Category.all.map{ |c| [c.name, c.id]}
   end
 
   def create
     @anime = current_user.anime.build(anime_params)
+    @anime.category_id  = params[:category_id]
 
     if @anime.save
       redirect_to root_path
@@ -23,9 +25,12 @@ class AnimesController < ApplicationController
   end
 
   def edit
+    @categories = Category.all.map{ |c| [c.name, c.id]}
   end
 
   def update
+    @anime.category_id  = params[:category_id]
+
     if @anime.update(anime_params)
       redirect_to anime_path(@anime)
     else
@@ -40,7 +45,7 @@ class AnimesController < ApplicationController
 
   private
   def anime_params
-    params.require(:anime).permit(:title, :description, :creator)
+    params.require(:anime).permit(:title, :description, :creator, :category_id)
   end
 
   def find_anime
