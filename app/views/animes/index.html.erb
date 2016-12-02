@@ -1,3 +1,9 @@
-<% @animes.each do |anime| %>
-  <h2><%= link_to anime.title, anime_path(anime) %></h2>
+<h1 class="current-category"><%= params[:category] %></h1>
+
+<% if @animes.count == 0 %>
+  <h3>There are no Animes in this Category</h3>
+<% else %>
+  <% @animes.each do |anime| %>
+    <h2><%= link_to anime.title, anime_path(anime) %></h2>
+  <% end %>
 <% end %>
