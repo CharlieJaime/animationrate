@@ -50,7 +50,7 @@ class AnimesController < ApplicationController
 
   private
   def anime_params
-    params.require(:anime).permit(:title, :description, :creator, :category_id)
+    params.require(:anime).permit(:title, :description, :creator, :category_id, :anime_img)
   end
 
   def find_anime
