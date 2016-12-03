@@ -3,7 +3,14 @@
 <% if @animes.count == 0 %>
   <h3>There are no Animes in this Category</h3>
 <% else %>
-  <% @animes.each do |anime| %>
-    <h2><%= link_to anime.title, anime_path(anime) %></h2>
-  <% end %>
+  <div class="row">
+    <% @animes.each do |anime| %>
+      <div class="col-md-3">
+        <a href="/animes/<%= anime.id %>">
+          <%= image_tag anime.anime_img.url(:anime_index), class: 'play' %>
+        </a>
+      </div>
+<!--       <h2><%= link_to anime.title, anime_path(anime) %></h2> -->
+    <% end %>
+  </div>
 <% end %>
