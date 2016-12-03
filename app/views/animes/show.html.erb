@@ -1,13 +1,22 @@
-<h2><%= @anime.title %></h2>
-<h3><%= @anime.creator %></h3>
-<h4><%= @anime.category.name %></h4>
-<p><%= @anime.description %></p>
+<div class="row">
+  <div class="col-md-4">
+    <%= image_tag @anime.anime_img.url(:anime_show), class: "play-show" %>
+  </div>
+  <div class="col-md-8">
+    <div class="play-info">
+      <h2 class="play-title"><%= @anime.title %></h2>
+      <h3 class="play-director"><span>By </span><%= @anime.creator %></h3>
+      <h4 class="play-director"><%= @anime.category.name %></h4>
+      <p class="play-desc"><%= @anime.description %></p>
+    </div>
+  </div>
+</div>
 
 <div class="links btn-group">
   <% if user_signed_in? %>
     <% if @anime.user_id == current_user.id %>
-      <%= link_to "Edit", edit_anime_path(@anime) %>
-      <%= link_to "Delete", anime_path(@anime), method: :delete, data: {confirm: "Are you sure?" }%>
+      <%= link_to "Edit", edit_anime_path(@anime), class: "btn btn-custom" %>
+      <%= link_to "Delete", anime_path(@anime), method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-custom"%>
     <% end %>
   <% end %>
 </div>
