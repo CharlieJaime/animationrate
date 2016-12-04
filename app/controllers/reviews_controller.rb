@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :find_anime, only: [:new, :create]
+  before_action :find_anime
+  before_action :find_review, only: [:edit, :update, :destroy]
 
   def new
   end
@@ -16,10 +17,30 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @review.update(review_params)
+      redirect_to anime_path(@anime)
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @review.destroy
+    redirect_to anime_path(@anime)
+  end
+
   private
 
   def find_anime
     @anime = Anime.find(params[:anime_id])
+  end
+
+  def find_review
+    @review = Review.find(params[:id])
   end
 
   def review_params
