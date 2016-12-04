@@ -12,6 +12,16 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="col-md-12">
+    <div class="reviews">
+      <h1> Reviews </h1>
+        <%= render @anime.review %>
+        <%= link_to "Add Reviews", new_anime_review_path(@anime), class: 'btn-custom' %>
+    </div>
+  </div>
+</div>
+
 <div class="links btn-group">
   <% if user_signed_in? %>
     <% if @anime.user_id == current_user.id %>
