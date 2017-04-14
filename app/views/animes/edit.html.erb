@@ -1,10 +1,14 @@
-<h1>Edit Anime</h1>
+<div class="col-md-10 col-md-offset-1">
+  <div class="new-play-form">
+    <h1>Edit Anime</h1>
 
-<%= simple_form_for @anime, html: {multipart: true} do |f|%>
-  <%= f.select :category_id, @categories %>
-  <%= f.file_field :anime_img %>
-  <%= f.input :title, label: "Animation title" %>
-  <%= f.input :description %>
-  <%= f.input :creator %>
-  <%= f.button :submit %>
-<% end %>
+    <%= simple_form_for @anime, html: {multipart: true} do |f|%>
+      <%= f.select :category_id, @categories %>
+      <%= f.file_field :anime_img %>
+      <%= f.input :title, label: "Animation title" %>
+      <%= f.input :description %>
+      <%= f.input :creator %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
